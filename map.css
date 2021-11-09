@@ -48,6 +48,17 @@ body.night #encounter-bar{
     width: 150px;
     
 }
+
+.encounter-dialogue {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 100%;
+}
+.encounter-dialogue button {
+    padding: 5px;
+    
+}
 .tile {
     
     display: block;

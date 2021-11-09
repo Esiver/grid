@@ -47,6 +47,46 @@ class Unit {
     }
 }
 
+const unitsInfo = {
+    "shadeInfo" : 
+        {
+            "portraits" : [
+                {1 : "shade.png"},
+                {2 : "shade.png"}
+            ],
+            "dialogue" : {
+                    "normal": 
+                    [
+                        "default1",
+                        "default2"
+                    ],
+                    "angry": 
+                    [
+                        "The damned stand ready...",
+                        "angry 2"
+                    ],
+                    "happy":
+                    [
+                        "All I see is blackness. Oh, my hood's down."
+                    ],
+                    "talk": {
+                        "quests" : ["SHADE1"],
+                        "dialogue" : [
+                            {
+                                "hello" : "..."
+                            },
+                            {
+                                "Where did you come from?" : "We are always here, whether you see us or not."
+                            },
+                            {
+                                "goodbye" : "Farewell, mortal."
+                            }
+                        ]
+                    }
+                        
+            }
+        }
+}
 const shadeInfo = {
     "portraits" : [
         {1 : "shade.png"},
@@ -67,22 +107,22 @@ const shadeInfo = {
             [
                 "All I see is blackness. Oh, my hood's down."
             ],
-            "conversations": {
-                "Where did you come from?": {
-                    "answer" : ["bobba1"]
-                },
-                "Who are you?": {
-                    "answer" : ["bobba2"]
-                },
-                "Do you have any tasks for me?" : {
-                    "answer" : ["give me salt"],
-                    "quest" : ["SHADE1"]
-                }
+            "talk": {
+                "quests" : ["SHADE1"],
+                "dialogue" : [
+                    {
+                        "hello" : "..."
+                    },
+                    {
+                        "Where did you come from?" : "We are always here, whether you see us or not."
+                    },
+                    {
+                        "goodbye" : "Farewell, mortal."
+                    }
+                ]
             }
                 
     }
 }
 
 
-
-console.log(shadeInfo)

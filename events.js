@@ -9,6 +9,7 @@ const eventNight = () => {
             unitDOM.classList = 'unit shade'
             unitDOM.setAttribute('img','shade.png')
             unitDOM.setAttribute('name','Mysterious Shade')
+            unitDOM.setAttribute('JSON','shadeInfo')
             unitDOM.setAttribute('mood',2)
             allUnits.push(unitDOM)
             tile.append(unitDOM)
@@ -52,8 +53,20 @@ const aQuest = {
         },
         "SHADE1" : {
             "started": false,
-            "startedTime": "5",
-            "finished": false
+            "startedTime": 6,
+            "finished": false,
+            "minCounter": 0,
+            "maxCounter": 10,
+            "currentCounter": 0,
+            "dialogue": {
+                "int": "I've heard the summons",
+                "description": "You know what you must do. Get the girl.",
+                "accept" :"I will see you at the world tree.",
+                "start" : "splendid",
+//                "end": "tak fordi du reddede prinsen kammerat",
+                "fail":"wtf hvad fanden laver du, prinsessen er død"
+            }
+
         }
     }
 }
