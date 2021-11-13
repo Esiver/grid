@@ -4,13 +4,15 @@ function getTile(x, y){
     return tile
 }
 
+function getUnitTile(unit){
+    return unit.closest('.tile')
+}
+
 function moveUnit(unit,x,y){
     getTile(x,y)[0].append(unit)
 }
 
-function getUnitTile(unit){
-    return unit.closest('.tile')
-}
+
 function moveCommand(unit, x1, y1){
     // first check distance to goal
     var x0 = parseInt(getUnitTile(unit).getAttribute('x'))
@@ -94,11 +96,12 @@ function movePath(unit, x1, y1 ){
 
 // click to  move
 document.addEventListener('click',(e)=>{
-    clearEncounters()
+
 
     if(e.target.classList == 'tile'){
         var target = e.target   
         movePath(hero,target.getAttribute('x'),target.getAttribute('y'))
+        clearEncounters()
     }
     if (e.target.classList.contains('unit')) {
         var target = e.target   

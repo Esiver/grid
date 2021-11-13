@@ -4,6 +4,7 @@ const allUnits = []
 // // unit
 // hero
 const hero = document.createElement('unit')
+hero.setAttribute('mood', 10)
 hero.classList = 'unit'
 hero.setAttribute('stamina', 10)
 hero.innerText = 'hero'
@@ -48,6 +49,41 @@ class Unit {
 }
 
 const unitsInfo = {
+    "hero" : {
+        "portraits" : [
+            {1: ""}
+        ],
+        "dialogue" : {
+                "normal": 
+                [
+                    "default1",
+                    "default2"
+                ],
+                "angry": 
+                [
+                    "The damned stand ready...",
+                    "angry 2"
+                ],
+                "happy":
+                [
+                    "All I see is blackness. Oh, my hood's down."
+                ],
+                "talk": {
+                    "dialogue" : [
+                        {
+                            "hello" : "..."
+                        },
+                        {
+                            "Where did you come from?" : "We are always here, whether you see us or not."
+                        },
+                        {
+                            "goodbye" : "Farewell, mortal."
+                        }
+                    ]
+                }
+                    
+        }
+    },
     "shadeInfo" : 
         {
             "portraits" : [

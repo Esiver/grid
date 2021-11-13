@@ -3,6 +3,11 @@
 function clearEncounters(){
     setEncounterImage(unknownImage)
     setEncounterName('...')
+    
+    clearEncounterDialogue()
+}
+function clearEncounterDialogue(){
+    encounterDialogueBar.innerText = null
 }
 
 function encounter(unit){
@@ -26,9 +31,10 @@ const setEncounterControls = (unit) => {
     
 }
 
+
 const setEncounterDialogue = (unit, unitJSON) => {
     console.log( unitJSON)
-        encounterDialogueBar.innerText = unitJSON.dialogue.angry[0]
+        //encounterDialogueBar.innerText = unitJSON.dialogue.angry[0]
         if (Object.keys(unitJSON.dialogue.talk).length > 0){
             for (dia in unitJSON.dialogue.talk.dialogue){
                 let key = Object.keys(unitJSON.dialogue.talk.dialogue[dia])
@@ -44,21 +50,27 @@ const setEncounterDialogue = (unit, unitJSON) => {
                 encounterDialogueBar.append(dialogBtn)
             }
             for (let q = 0 ; q < unitJSON.dialogue.talk.quests.length ; q++ ) { // gå igennem alle quests i units, 
-                // derefter match med questens navn i missions registret. 
-                let startQBtn = document.createElement("BUTTON")
-                startQBtn.innerText = aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].dialogue.int
-                encounterDialogueBar.append(startQBtn)
+                    // checker lige om vi har startet missionen eller ej...
+                if (aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].started == false){ 
+                    // derefter match med questens navn i missions registret. 
+                    let startQBtn = document.createElement("BUTTON")
+                    startQBtn.innerText = aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].dialogue.int
+                    encounterDialogueBar.append(startQBtn)
 
-                startQBtn.addEventListener("click", ()=> {
-                    encounterDialogueBar.innerText = aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].dialogue.description 
-                    let acceptQBtn = document.createElement("BUTTON")
-                    acceptQBtn.innerText = aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].dialogue.accept
-                    encounterDialogueBar.append(acceptQBtn)
-                    acceptQBtn.addEventListener("click" , ()=> {
-                        aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].started = true
-                        encounterDialogueBar.innerText = aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].dialogue.start
+                    startQBtn.addEventListener("click", ()=> {
+                        encounterDialogueBar.innerText = aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].dialogue.description 
+                        let acceptQBtn = document.createElement("BUTTON")
+                        acceptQBtn.innerText = aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].dialogue.accept
+                        encounterDialogueBar.append(acceptQBtn)
+
+                        acceptQBtn.addEventListener("click" , ()=> {
+                            //aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].started = true
+                            startQuest(aQuest.allQuests[unitJSON.dialogue.talk.quests[q]])
+                            encounterDialogueBar.innerText = aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].dialogue.start
+                        })
                     })
-                })
+                }
+                
 
                 //console.log(aQuest.allQuests[unitJSON.dialogue.talk.quests[q]].dialogue.start)
                 

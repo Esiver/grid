@@ -28,6 +28,37 @@ const eventDay = () => {
     console.log(allUnits)
 }
 
+const logQuest = (command, quest) => {
+    if(command == 'start') {
+        let questItem = document.createElement('LI')
+        questItem.classList.add('quest-item')
+        questItem.innerHTML = `
+        <summary>
+        `+quest.title+`
+        <details>`+quest.description+`
+        <br> Progress: `+ quest.currentCounter + `/`+ quest.maxCounter +`
+        </details>
+        `
+        document.getElementById('quest-log').append(questItem)
+    }
+    if(command == 'progress'){
+        // * TODO: naar der logQuest'es gaar vi igennem hele quest JSON, og kompilerer vores questlog
+        //         alt efter hvordan vores aQuest JSON object serud.
+        //         det kommer nok til at vaere noget med aQuest.forEach((quest)=>{ if (quest.started == true){ goer noget her.}})
+    }
+    if (command == 'complete'){
+        console.log('completed quest', quest)
+    }
+ 
+}
+const startQuest = (quest) => {
+    quest.started = true
+    //console.log(quest)
+    logQuest('start', quest)
+
+}
+
+
 
 
 const aQuest = {
@@ -52,11 +83,13 @@ const aQuest = {
             "finished": false
         },
         "SHADE1" : {
+            "title":"The Summoning",
+            "description": "Take the princess to the world tree. Sacrifice her to The Old Gods",
             "started": false,
             "startedTime": 6,
             "finished": false,
             "minCounter": 0,
-            "maxCounter": 10,
+            "maxCounter": 1,
             "currentCounter": 0,
             "dialogue": {
                 "int": "I've heard the summons",
@@ -66,6 +99,7 @@ const aQuest = {
 //                "end": "tak fordi du reddede prinsen kammerat",
                 "fail":"wtf hvad fanden laver du, prinsessen er død"
             }
+            
 
         }
     }

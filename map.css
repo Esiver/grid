@@ -4,6 +4,10 @@
 }
 body{
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    display: grid;
+    grid-template-rows: 1fr 3fr 1fr;
+    gap: 1em;
+    height: 100vh;
 }
 body.night{
     background-color: black;
@@ -13,9 +17,36 @@ body.night{
 body.night #encounter-bar{
     background-color: rgb(87, 55, 13);
 }
+.top{
+
+}
+.mid{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    
+}
+.bottom{
+
+}
+
+/* Inventory & Quests */
+.inventory {
+    background-color: rgb(251, 168, 109);
+}
+
+
+/* quest log */
+.quest-log {
+    background-color: rgb(124, 89, 66);
+}
+.quest-item {
+    list-style: none;
+    padding: 0 1em;
+}
+
+/* Map */
 #map {
     width: 100%;
-    height: 60vh;
     display: flex;
     margin: auto;
     justify-content: center;
@@ -61,7 +92,7 @@ body.night #encounter-bar{
 }
 .tile {
     
-    display: block;
+    display: table;
     width: var(--tile-width);
     height: var(--tile-height);
     background-color: rgb(255, 181, 154);
@@ -104,6 +135,7 @@ terrain {
 }
 .unit.shade{
     background-color: rgb(42, 42, 85);
+    box-shadow: inset 0 0 1px white;
 }
 .unit.monster::after{
     color: white;
@@ -119,3 +151,4 @@ terrain {
     background-color: rgb(153, 153, 153);
     color: red;
 }
+
